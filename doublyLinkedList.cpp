@@ -27,19 +27,31 @@ void insertAtHead(int value)
         head = temp;
     }
 };
-void print()
+void printReverse()
 {
     Node *temp = head;
+    if (temp == NULL)
+    {
+        return;
+    }
+    while (temp->next != NULL)
+    {
+
+        temp = temp->next;
+    } // Get Last Element
+
     while (temp != NULL)
     {
+
         cout << temp->data << endl;
-        temp = temp->next;
+        temp = temp->prev;
     }
-}
+};
+
 int main()
 {
     head = NULL;
     insertAtHead(2);
     insertAtHead(6);
-    print();
+    printReverse();
 }
