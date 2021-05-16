@@ -61,6 +61,19 @@ void depthFirstPreOrder(Node *root)
     depthFirstPreOrder(root->right);
 }
 
+bool isBinarySearchTree(Node *root, int minValue, int maxValue)
+{
+    if (root == NULL)
+        return true;
+    if (root->data >= minValue && root->data <= maxValue)
+    {
+        isBinarySearchTree(root->left, minValue, root->data);
+        isBinarySearchTree(root->right, root->data, maxValue);
+    }
+
+    else
+        return false;
+}
 int main()
 {
     Node *root = NULL;
@@ -73,7 +86,8 @@ int main()
     root = insertANode(root, 10);
     root = insertANode(root, 15);
     root = insertANode(root, 25);
-    depthFirstPreOrder(root);
+    // depthFirstPreOrder(root);
 
-    root->breadthFirstTraversal(root);
+    // root->breadthFirstTraversal(root);
+    cout << isBinarySearchTree(root, INT_MAX, INT_MIN);
 }
